@@ -2,7 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const { interviewController } = require('../controllers');
-const { createInterview } = interviewController
+const { createInterview, getAllInterviews } = interviewController
+
+router.get('/', async (req, res) => {
+  const interviews = await getAllInterviews();
+  console.log('achis achis')
+  console.log(interviews);
+  res.send(interviews);
+})
 
 
 router.post('/', async (req, res) => {
